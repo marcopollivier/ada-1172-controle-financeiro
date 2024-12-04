@@ -18,7 +18,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user = Optional.of(new User(1L, "marco", "marco@gmail.com"));
         return user.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
