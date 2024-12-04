@@ -45,8 +45,6 @@ public class UserControllerTest {
                 .body("id", equalTo(1))
                 .body("name", equalTo("marco"))
                 .body("email", equalTo("marco@gmail.com"));
-
-
     }
 
     @Test
@@ -58,6 +56,3 @@ public class UserControllerTest {
                 .statusCode(404);
     }
 }
-
-
-// entrada -> processamento -> saida
