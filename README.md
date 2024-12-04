@@ -27,8 +27,13 @@ org.hamcrest:hamcrest:2.1 -> 2.2
 > Segundo a própria documentação é necessário que a dependência do `rest-assured`venha antes da declaração de 
 > dependência`JUnit` em seu `pom.xml / build.gradle` para garantir que a versão correta do `Hamcrest` seja usada.
 
+- É possível verificar a versão da dependência por meio do comando 
+```bash 
+./gradlew dependencies 
+```
+
+- No fim suas dependências vão ficar parecidas com essas
 ```groovy
-	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.rest-assured:rest-assured:5.5.0'
