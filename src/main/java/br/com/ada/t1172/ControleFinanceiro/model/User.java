@@ -10,13 +10,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Column(unique = true)
     private String email;
 
     public User() {
     }
 
-    public User(Long id, String name, String email) {
-        this.id = id;
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }

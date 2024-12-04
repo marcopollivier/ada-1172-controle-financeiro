@@ -21,8 +21,23 @@ public class UserControllerTest {
         RestAssured.port = port;
     }
 
+
     @Test
     public void shouldAddAndGetUser() {
+        given()
+            .body("""
+                {
+                    "name": "marco",
+                    "email": "marco@gmail.com"
+                }
+            """)
+            .contentType("application/json")
+                .when()
+                .post("/api/users")
+                .then()
+                .statusCode(201)
+                .body("name", equalTo("marco"));
+
         when()
                 .get("/api/users/1")
                 .then()
@@ -30,6 +45,8 @@ public class UserControllerTest {
                 .body("id", equalTo(1))
                 .body("name", equalTo("marco"))
                 .body("email", equalTo("marco@gmail.com"));
+
+
     }
 
     @Test
@@ -38,6 +55,9 @@ public class UserControllerTest {
                 .when()
                 .get("/api/users/999")
                 .then()
-                .statusCode(404); // Status 404 Not Found para usuário inexistente
+                .statusCode(404);
     }
 }
+
+
+// entrada -> processamento -> saida
