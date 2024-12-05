@@ -48,6 +48,36 @@ public class UserControllerTest {
     }
 
     @Test
+    public void shouldReturn403IfUserAlreadyExists() {
+        given()
+                .body("""
+                {
+                    "name": "marco",
+                    "email": "marco@gmail.com"
+                }
+            """)
+                .contentType("application/json")
+                .when()
+                .post("/api/users")
+                .then()
+                .statusCode(201)
+                .body("name", equalTo("marco"));
+
+        given()
+                .body("""
+                {
+                    "name": "marco",
+                    "email": "marco@gmail.com"
+                }
+            """)
+                .contentType("application/json")
+                .when()
+                .post("/api/users")
+                .then()
+                .statusCode(403);
+    }
+
+    @Test
     public void shouldReturnNotFoundForInvalidUser() {
         given()
                 .when()

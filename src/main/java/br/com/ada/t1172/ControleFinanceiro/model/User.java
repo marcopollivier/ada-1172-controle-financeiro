@@ -1,6 +1,5 @@
 package br.com.ada.t1172.ControleFinanceiro.model;
 
-
 import jakarta.persistence.*;
 
 @Entity

@@ -25,6 +25,12 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> addUser(@RequestBody User user) {
+        var findableUser = userRepository.findByEmail(user.getEmail());
+
+        if (findableUser.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
         var resp = userRepository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(resp);
     }
